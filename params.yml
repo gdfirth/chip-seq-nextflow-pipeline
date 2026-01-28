@@ -1,0 +1,11 @@
+input: './samplesheet.csv'
+outdir: './results/'
+fasta: './TriTrypDB-64_TbruceiLister427_2018_Genome.fasta'
+gtf: './TriTrypDB-64_TbruceiLister427_2018.gtf'
+#skip_trimming: true
+#skip_peak_annotation: false
+#macs_gsize: 2.67e7
+#save_reference: true
+#aligner: 'bowtie2'
+#narrow_peak: true
+#macs_fdr: 0.01
