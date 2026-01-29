@@ -7,8 +7,6 @@ process ALIGNMENT {
 
     script:
     """
-    ls
-    ls ${indexed_genome}
-    bowtie2 -x ${indexed_genome} -1 ${fastq_1} -2 ${fastq_2} -S ${meta.id}.sam 2> ${meta.id}.txt
+    bowtie2 -x "${indexed_genome}/${indexed_genome}" -1 ${fastq_1} -2 ${fastq_2} -S ${meta.id}.sam 2> ${meta.id}.txt
     """
 }
