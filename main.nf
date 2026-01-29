@@ -45,7 +45,7 @@ workflow {
     samples_ch.combine(indexed_genome_ch).set { align_in_ch }
 
 
-    samples_ch.view()
+    //samples_ch.view()
     ALIGNMENT( align_in_ch )
 
 }
