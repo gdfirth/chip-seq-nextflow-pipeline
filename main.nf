@@ -9,7 +9,8 @@ nextflow.enable.dsl=2
 
 include { GENOME_INDEXING   } from './modules/1-genome-indexing'
 include { ALIGNMENT         } from './modules/2-alignment'
-//include { SAMTOOLS        } from './modules/3-peak-calling.nf'
+include { FILTERING         } from './modules/3-filtering'
+include { SORTING           } from './modules/4-sorting'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -46,6 +47,12 @@ workflow {
 
 
     //samples_ch.view()
-    ALIGNMENT( align_in_ch )
+    align = ALIGNMENT(samples_ch, indexed_genome_ch)
+    aligned_ch = align.out.sam_ch
+
+
+    filtered_ch = FILTERING( aligned_ch )
+
+    sorted_ch = SORTING( filtered_ch )
 
 }
