@@ -48,7 +48,7 @@ workflow {
 
     //samples_ch.view()
     align = ALIGNMENT( align_in_ch )
-    aligned_ch = align.out.sam_ch
+    aligned_ch = align.sam_ch
 
 
     filtered_ch = FILTERING( aligned_ch )
