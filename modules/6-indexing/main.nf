@@ -1,5 +1,5 @@
 process INDEXING {  
-    tag { "${meta.id}" }
+    tag "${meta.id}"
 
     input:
     tuple val(meta), path(bam)

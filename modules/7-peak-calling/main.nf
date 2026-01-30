@@ -1,14 +1,17 @@
 process PEAK_CALLING {
-    tag "${sample_id}"
+    tag "${meta.id}"
+    publishDir "results/peaks", mode: 'copy', pattern: '*_peaks.narrowPeak', '*_peaks_count.txt'
 
     input:
-    tuple val(sample_id), path(bam_index)
+    tuple val(meta), path(bam_sample), path(bam_control)
 
     output:
-    tuple val(sample_id), path("${sample_id}_peaks.narrowPeak")
+    tuple val(meta), path("${meta.id}_peaks.narrowPeak"), emit: peaks_ch
+    path("${meta.id}_peaks_count.txt"), emit: peaks_count_ch
 
     script:
     """
-    macs2 callpeak -t ${bam_index} -c ${bam_index} -g 2.67e7 -- nomodel --extsize 200 --qvalue 0.01 -n ${sample_id}_peaks
+    macs2 callpeak -t ${bam_sample} -c ${bam_control} -g 2.67e7 -- nomodel --extsize 200 --qvalue 0.01 -n ${meta.id}_peaks.narrowPeak
+    wc -l ${meta.id}_peaks.narrowPeak > ${meta.id}_peaks_count.txt
     """
 }

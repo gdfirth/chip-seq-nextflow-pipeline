@@ -1,5 +1,5 @@
 process FILTERING {
-    tag "sample_id"
+    tag "${meta.id}"
     conda "${moduleDir}/env.yml"
     label 'process_medium_cpu'
 

@@ -1,5 +1,5 @@
 process ALIGNMENT {
-    tag "sample_id"
+    tag "${meta.id}"
     conda "${moduleDir}/env.yml"
     label 'process_high_cpu'
     publishDir "results/alignmentlogs", mode: 'copy', pattern: '*_alignment_stats.txt'

@@ -63,4 +63,6 @@ workflow {
 
     indexed_ch.view()
 
+    //NOTE Do the same as alignment step for peak calling step
+
 }

@@ -1,5 +1,5 @@
 process DEDUPLICATE {
-    tag "sample_id"
+    tag "${meta.id}"
     conda "${moduleDir}/env.yml"
     label 'process_high_mem'
     publishDir "results/deduplicated", mode: 'copy', pattern: '*_dedup_metrics.txt'
