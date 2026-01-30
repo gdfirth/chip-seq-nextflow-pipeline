@@ -47,7 +47,7 @@ workflow {
 
 
     //samples_ch.view()
-    align = ALIGNMENT(samples_ch, indexed_genome_ch)
+    align = ALIGNMENT( align_in_ch )
     aligned_ch = align.out.sam_ch
 
 
