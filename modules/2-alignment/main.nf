@@ -13,6 +13,6 @@ process ALIGNMENT {
 
     script:
     """
-    bowtie2 -p 12 -x "${indexed_genome}/${indexed_genome}" -1 ${fastq_1} -2 ${fastq_2} -S ${meta.id}.sam 2> ${meta.id}_alignment_stats.txt
+    bowtie2 -p 12 --rg-id ${meta.id} --rg SM:${meta.id} --rg LB:lib1 --rg PL:ILLUMINA -x "${indexed_genome}/${indexed_genome}" -1 ${fastq_1} -2 ${fastq_2} -S ${meta.id}.sam 2> ${meta.id}_alignment_stats.txt
     """
 }
