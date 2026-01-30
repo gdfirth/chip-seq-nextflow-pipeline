@@ -11,6 +11,8 @@ include { GENOME_INDEXING   } from './modules/1-genome-indexing'
 include { ALIGNMENT         } from './modules/2-alignment'
 include { FILTERING         } from './modules/3-filtering'
 include { SORTING           } from './modules/4-sorting'
+include { DEDUPLICATE       } from './modules/5-deduplicate'
+include { INDEXING          } from './modules/6-indexing'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -54,5 +56,11 @@ workflow {
     filtered_ch = FILTERING( aligned_ch )
 
     sorted_ch = SORTING( filtered_ch )
+
+    dedup_ch = DEDUPLICATE( sorted_ch )
+
+    indexed_ch = INDEXING( dedup_ch )
+
+    indexed_ch.view()
 
 }

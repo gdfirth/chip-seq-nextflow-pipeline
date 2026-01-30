@@ -9,7 +9,7 @@ process ALIGNMENT {
 
     output:
     tuple val(meta), path("${meta.id}.sam"), emit: sam_ch
-    path("${meta.id}.txt"), emit: txt_ch
+    path("${meta.id}_alignment_stats.txt"), emit: txt_ch
 
     script:
     """
