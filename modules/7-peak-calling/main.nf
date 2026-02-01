@@ -1,5 +1,6 @@
 process PEAK_CALLING {
     tag "${meta.id}"
+    conda "${moduleDir}/env.yml"
     publishDir "results/peaks", mode: 'copy', pattern: '*_peaks.narrowPeak', '*_peaks_count.txt'
 
     input:
@@ -11,7 +12,7 @@ process PEAK_CALLING {
 
     script:
     """
-    macs2 callpeak -t ${bam_sample} -c ${bam_control} -g 2.67e7 -- nomodel --extsize 200 --qvalue 0.01 -n ${meta.id}_peaks.narrowPeak
+    macs2 callpeak -t ${bam_sample} -c ${bam_control} -g 2.67e7 --nomodel --extsize 200 --qvalue 0.01 -n ${meta.id}_peaks.narrowPeak
     wc -l ${meta.id}_peaks.narrowPeak > ${meta.id}_peaks_count.txt
     """
 }
