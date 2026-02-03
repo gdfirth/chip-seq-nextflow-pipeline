@@ -7,7 +7,8 @@
 #SBATCH --mem=16G
 
 module load Nextflow/24.10.2
-module load Miniforge3/24.7.1-2
+#module load Miniforge3/24.7.1-2
+module load Miniconda3/23.10.0-1
 
 export CONDA_NO_PLUGINS=true
 export CONDA_ENVS_PATH=$HOME/.conda/envs
