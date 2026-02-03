@@ -9,4 +9,5 @@
 module load Nextflow/24.10.2
 module load Miniforge3/24.7.1-2
 
+#export CONDA_NO_PLUGINS=true
 nextflow run main.nf -resume
