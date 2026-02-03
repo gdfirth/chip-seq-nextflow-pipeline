@@ -72,8 +72,6 @@ workflow {
         tuple( meta, bam_path )
     }
 
-    peak_input_ch.view()
-
     peak_input_ch.filter{ item ->
         def meta = item[0]
         return !meta.is_control
@@ -84,7 +82,20 @@ workflow {
         return meta.is_control
     } .set { peak_input_controls_ch }
     
-    peak_input_controls_ch.view()
-    peak_input_samples_ch.view()
+    peak_input_samples_ch.map{ item ->
+        def value = tuple(item[0], item[1])
+
+        return tuple(item[0].control, value)
+    } .set { peak_input_samples_ch }
+
+    peak_input_controls_ch.map{ item ->
+        def value = tuple(item[0], item[1])
+
+        return tuple(item[0].sample, value)
+    } .set { peak_input_controls_ch }
+
+    peak_input_samples_ch.join( peak_input_controls_ch ).set { peak_calling_in_ch }
+
+    peak_calling_in_ch.view()
 
 }
