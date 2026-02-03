@@ -94,7 +94,7 @@ workflow {
         return tuple(item[0].sample, value)
     } .set { peak_input_controls_ch }
 
-    peak_input_samples_ch.join( peak_input_controls_ch ).set { peak_calling_in_ch }
+    peak_input_controls_ch.join( peak_input_samples_ch ).set { peak_calling_in_ch }
 
     peak_calling_in_ch.view()
 
