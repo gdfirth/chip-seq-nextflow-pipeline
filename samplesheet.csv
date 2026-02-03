@@ -1,5 +1,5 @@
 sample,fastq_1,fastq_2,replicate,antibody,control,control_replicate
-ChIP,input/trimmed_ChIP04.R1.fastq.gz,input/trimmed_ChIP04.R2.fastq.gz,1,BG4,INPUT,1
-ChIP,input/trimmed_ChIP05.R1.fastq.gz,input/trimmed_ChIP05.R2.fastq.gz,2,BG4,INPUT,1
-ChIP,input/trimmed_ChIP06.R1.fastq.gz,input/trimmed_ChIP06.R2.fastq.gz,3,BG4,INPUT,1
-INPUT,input/trimmed_Input02.R1.fastq.gz,input/trimmed_Input02.R2.fastq.gz,1,,,
+ChIP,input/trimmed_ChIP04.R1.fastq.gz,input/trimmed_ChIP04.R2.fastq.gz,1,BG4,INPUT1,1
+ChIP,input/trimmed_ChIP05.R1.fastq.gz,input/trimmed_ChIP05.R2.fastq.gz,2,BG4,INPUT1,1
+ChIP,input/trimmed_ChIP06.R1.fastq.gz,input/trimmed_ChIP06.R2.fastq.gz,3,BG4,INPUT1,1
+INPUT1,input/trimmed_Input02.R1.fastq.gz,input/trimmed_Input02.R2.fastq.gz,1,,,

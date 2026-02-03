@@ -63,6 +63,18 @@ workflow {
 
     indexed_ch.view()
 
+    peak_input_ch = indexed_ch.map { item ->
+        def meta = item[0]
+        def bam_path = item[1]
+
+        def is_control = meta.control == ""
+
+        meta.is_control = is_control
+
+        tuple( meta, bam_path )
+    }
+
+    peak_input_ch.view()
     //NOTE Do the same as alignment step for peak calling step
 
 }
