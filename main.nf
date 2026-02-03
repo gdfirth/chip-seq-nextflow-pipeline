@@ -58,7 +58,7 @@ workflow {
 
     sorted_ch = SORTING( filtered_ch )
 
-    dedup_ch = DEDUPLICATE( sorted_ch )
+    dedup_ch = DEDUPLICATE( sorted_ch ).dedup_bam_ch
 
     indexed_ch = INDEXING( dedup_ch )
 

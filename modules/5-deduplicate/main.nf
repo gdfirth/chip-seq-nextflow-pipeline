@@ -8,7 +8,8 @@ process DEDUPLICATE {
     tuple val(meta), path(bam_file)
 
     output:
-    tuple val(meta), path("${meta.id}_deduplicated.bam")
+    tuple val(meta), path("${meta.id}_deduplicated.bam"), emit: dedup_bam_ch
+    path("${meta.id}_dedup_metrics.txt"), emit: dedup_metrics_ch
 
     script:
     """
