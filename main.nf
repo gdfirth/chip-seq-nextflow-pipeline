@@ -61,8 +61,6 @@ workflow {
 
     indexed_ch = INDEXING( dedup_ch )
 
-    indexed_ch.view()
-
     peak_input_ch = indexed_ch.map { item ->
         def meta = item[0]
         def bam_path = item[1]
@@ -75,6 +73,18 @@ workflow {
     }
 
     peak_input_ch.view()
-    //NOTE Do the same as alignment step for peak calling step
+
+    peak_input_ch.filter{ item ->
+        def meta = item[0]
+        return !meta.is_control
+    } .set { peak_input_samples_ch }
+    
+    peak_input_ch.filter{ item ->
+        def meta = item[0]
+        return meta.is_control
+    } .set { peak_input_controls_ch }
+    
+    peak_input_controls_ch.view()
+    peak_input_samples_ch.view()
 
 }
