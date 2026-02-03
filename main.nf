@@ -13,6 +13,7 @@ include { FILTERING         } from './modules/3-filtering'
 include { SORTING           } from './modules/4-sorting'
 include { DEDUPLICATE       } from './modules/5-deduplicate'
 include { INDEXING          } from './modules/6-indexing'
+include { PEAK_CALLING      } from './modules/7-peak-calling'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -104,6 +105,6 @@ workflow {
         }
     } .set { peak_calling_in_ch }
 
-    peak_calling_in_ch.view()
+    called_peaks_ch = PEAK_CALLING( peak_calling_in_ch )
 
 }
