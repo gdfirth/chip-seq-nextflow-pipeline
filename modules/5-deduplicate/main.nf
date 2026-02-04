@@ -9,10 +9,11 @@ process DEDUPLICATE {
 
     output:
     tuple val(meta), path("${meta.id}_deduplicated.bam"), emit: dedup_bam_ch
-    path("${meta.id}_dedup_metrics.txt"), emit: dedup_metrics_ch
+    path("${meta.id}_dedup_metrics.txt"), path("${meta.id}_flagstat_dedup_metrics.txt"), emit: dedup_metrics_ch
 
     script:
     """
     picard MarkDuplicates REMOVE_DUPLICATES=TRUE I=${bam_file} O=${meta.id}_deduplicated.bam M=${meta.id}_dedup_metrics.txt 
+    samtools flagstat ${meta.id}_deduplicated.bam > ${meta.id}_flagstat_dedup_metrics.txt
     """
 }
