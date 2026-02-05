@@ -13,7 +13,7 @@ process PEAK_CALLING {
 
     script:
     """
-    macs2 callpeak -t ${bam_sample} -c ${bam_control} --nomodel --extsize 200 -g 2.67e7 --qvalue 0.01 -n ${meta.id}_peaks.narrowPeak
+    macs2 callpeak -t ${bam_sample} -c ${bam_control} --nomodel --extsize 200 -g 2.67e7 --qvalue 0.01 -n ${meta.id}
     wc -l ${meta.id}_peaks.narrowPeak > ${meta.id}_peaks_count.txt
     """
 }
