@@ -7,10 +7,12 @@ process INDEXING {
     tuple val(meta), path(bam)
 
     output:
-    tuple val(meta), path("${meta.id}.indexed.bam")
+    tuple val(meta), path("${bam}")
 
     script:
     """
-    samtools index -@ 6 ${bam} ${meta.id}.indexed.bam
+    #ln -s ${bam} ${meta.id}.indexed.bam
+    #samtools index -@ 6 ${meta.id}.indexed.bam
+    samtools index -@ 6 ${bam}
     """
 }
