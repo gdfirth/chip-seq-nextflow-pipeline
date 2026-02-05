@@ -2,7 +2,7 @@ process PEAK_CALLING {
     tag "${meta.id}"
     conda "${moduleDir}/env.yml"
     label 'process_medium_mem'
-    publishDir "results/peaks", mode: 'copy', pattern: '*_peaks.narrowPeak', '*_peaks_count.txt'
+    publishDir "results/peaks", mode: 'copy', pattern: '*_peaks.narrowPeak'//, '*_peaks_count.txt'
 
     input:
     tuple val(meta), path(bam_sample), path(bam_control)
