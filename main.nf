@@ -107,10 +107,10 @@ workflow {
 
     called_peaks_ch = PEAK_CALLING( peak_calling_in_ch )
 
-    //called_peaks_ch.view()
+    called_peaks_ch.peaks_ch.view()
 
-    called_peaks_ch.collect()
+    called_peaks_ch.peaks_ch.collect().set { all_called_peaks_ch }
 
-    //all_called_peaks_ch.view()
+    all_called_peaks_ch.view()
 
 }
