@@ -3,6 +3,7 @@ process CONSENSUS_PEAKS {
     tag "${meta1.id}_${meta2.id}_${meta3.id}"
     conda "${moduleDir}/env.yml"
     label 'process_low'
+    publishDir "${params.output ?: 'results'}/consensus_peaks", mode: 'copy'
 
     input:
     tuple val(meta1), path(peaks1), val(meta2), path(peaks2), val(meta3), path(peaks3)
