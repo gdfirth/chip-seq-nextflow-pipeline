@@ -14,6 +14,7 @@ include { SORTING           } from './modules/4-sorting'
 include { DEDUPLICATE       } from './modules/5-deduplicate'
 include { INDEXING          } from './modules/6-indexing'
 include { PEAK_CALLING      } from './modules/7-peak-calling'
+include { CONSENSUS_PEAKS   } from './modules/8-consensus-peaks'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -105,12 +106,14 @@ workflow {
         }
     } .set { peak_calling_in_ch }
 
-    called_peaks_ch = PEAK_CALLING( peak_calling_in_ch )
+    called_peaks_ch = PEAK_CALLING( peak_calling_in_ch ).peaks_ch
 
-    called_peaks_ch.peaks_ch.view()
+    called_peaks_ch.view()
 
-    called_peaks_ch.peaks_ch.collect().set { all_called_peaks_ch }
+    called_peaks_ch.collect().set { all_called_peaks_ch }
 
     all_called_peaks_ch.view()
+
+    CONSENSUS_PEAKS( all_called_peaks_ch )
 
 }
