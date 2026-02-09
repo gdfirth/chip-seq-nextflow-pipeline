@@ -109,7 +109,7 @@ workflow {
 
     //called_peaks_ch.view()
 
-    called_peaks_ch.collect().set { all_called_peaks_ch }
+    called_peaks_ch.collect()
 
     //all_called_peaks_ch.view()
 
