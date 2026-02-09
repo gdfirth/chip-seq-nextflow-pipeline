@@ -107,4 +107,8 @@ workflow {
 
     called_peaks_ch = PEAK_CALLING( peak_calling_in_ch )
 
+    called_peaks_ch.view()
+
+    called_peaks_ch.collect().view()
+
 }
