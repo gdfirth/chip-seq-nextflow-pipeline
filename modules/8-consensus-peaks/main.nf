@@ -13,7 +13,7 @@ process CONSENSUS_PEAKS {
 
     script:
     """
-    bedtools intersect -a ${peaks1} -b ${peaks2} > ${meta1.id}_${meta2.id}_consensus.bed
-    bedtools intersect -a ${meta1.id}_${meta2.id}_consensus.bed -b ${peaks3} > ${meta1.id}_${meta2.id}_${meta3.id}_consensus_peaks.bed
+    bedtools intersect -u -a ${peaks1} -b ${peaks2} > ${meta1.id}_${meta2.id}_consensus.bed
+    bedtools intersect -u -a ${meta1.id}_${meta2.id}_consensus.bed -b ${peaks3} > ${meta1.id}_${meta2.id}_${meta3.id}_consensus_peaks.bed
     """
 }
