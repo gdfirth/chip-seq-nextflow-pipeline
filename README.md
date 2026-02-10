@@ -1,7 +1,7 @@
 # chip-seq-nextflow-pipeline
 Custom ChIP-Seq Pipeline built in Nextflow for the Monti Lab
 
-Takes in 3 technical replicate samples and 1 control sample (`samplesheet.csv`). Workflow should be forked and slightly modified to handle different sets.
+Takes in 3 technical replicate samples and 1 control sample (`samplesheet.csv`). Workflow should be forked and slightly modified to handle differently numbered sets.
 
 
 ## Project structure (file locations)
