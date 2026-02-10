@@ -108,15 +108,11 @@ workflow {
 
     called_peaks_ch = PEAK_CALLING( peak_calling_in_ch ).peaks_ch
 
-    called_peaks_ch.view()
-
     called_peaks_ch.collect().map { items ->
         items.collate(2).sort { a, b -> 
             a[0].replicate <=> b[0].replicate 
         }.flatten()
     }.set { all_called_peaks_ch }
-
-    all_called_peaks_ch.view()
 
     CONSENSUS_PEAKS( all_called_peaks_ch )
 
