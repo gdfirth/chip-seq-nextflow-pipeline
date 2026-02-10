@@ -20,4 +20,4 @@ Takes in 3 technical replicate samples and 1 control sample (`samplesheet.csv`).
   - `6-indexing/`
   - `7-peak-calling/`
   - `8-consensus-peaks/`
-- `clear.sh`: helper script for cleaning hard reset of cache (!!!!IRREVERSIBLE!!!!).
+- `clear.sh`: helper script for hard reset of cache (!!!!IRREVERSIBLE!!!!).
