@@ -17,7 +17,7 @@ process CONSENSUS_PEAKS {
     cut -f 1-10 ${meta1.id}_${meta2.id}_consensus.bed > ${meta1.id}_${meta2.id}_temp.bed
     cut -f 11-20 ${meta1.id}_${meta2.id}_consensus.bed >> ${meta1.id}_${meta2.id}_temp.bed
 
-    bedtools merge -n -i ${meta1.id}_${meta2.id}_temp.bed > ${meta1.id}_${meta2.id}_consensus.bed
+    bedtools merge -i ${meta1.id}_${meta2.id}_temp.bed > ${meta1.id}_${meta2.id}_consensus.bed
     
     bedtools intersect -wo -a ${meta1.id}_${meta2.id}_consensus.bed -b ${peaks3} > ${meta1.id}_${meta2.id}_${meta3.id}_temp.bed
     cut -f 1-10 ${meta1.id}_${meta2.id}_${meta3.id}_temp.bed > ${meta1.id}_${meta2.id}_${meta3.id}_consensus_peaks.bed
