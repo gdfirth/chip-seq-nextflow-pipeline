@@ -13,21 +13,6 @@ process CONSENSUS_PEAKS {
 
     script:
     """
-    bedtools intersect -wo -a ${peaks1} -b ${peaks2} > ${meta1.id}_${meta2.id}_consensus.bed
-    cut -f 1-10 ${meta1.id}_${meta2.id}_consensus.bed > ${meta1.id}_${meta2.id}_temp.bed
-    cut -f 11-20 ${meta1.id}_${meta2.id}_consensus.bed >> ${meta1.id}_${meta2.id}_temp.bed
-
-    sort -k1,1 -k2,2n ${meta1.id}_${meta2.id}_temp.bed > ${meta1.id}_${meta2.id}_temp_sorted.bed
-
-    bedtools merge -i ${meta1.id}_${meta2.id}_temp_sorted.bed > ${meta1.id}_${meta2.id}_consensus.bed
-    
-    bedtools intersect -wo -a ${meta1.id}_${meta2.id}_consensus.bed -b ${peaks3} > ${meta1.id}_${meta2.id}_${meta3.id}_temp.bed
-    cut -f 1-3 ${meta1.id}_${meta2.id}_${meta3.id}_temp.bed > ${meta1.id}_${meta2.id}_${meta3.id}_consensus_peaks.bed
-    cut -f 4-6 ${meta1.id}_${meta2.id}_${meta3.id}_temp.bed >> ${meta1.id}_${meta2.id}_${meta3.id}_consensus_peaks.bed
-
-    sort -k1,1 -k2,2n ${meta1.id}_${meta2.id}_${meta3.id}_consensus_peaks.bed > ${meta1.id}_${meta2.id}_${meta3.id}_consensus_peaks_sorted.bed
-
-    bedtools merge -i ${meta1.id}_${meta2.id}_${meta3.id}_consensus_peaks_sorted.bed > ${meta1.id}_${meta2.id}_${meta3.id}_consensus_peaks.bed
-
+    bedtools intersect -a ${peaks1} -b ${peaks2} ${peaks3} > ${meta1.id}_${meta2.id}_${meta3.id}_consensus_peaks.bed
     """
 }
