@@ -13,12 +13,13 @@ process CONSENSUS_PEAKS {
 
     script:
     """
-    bedtools intersect -a ${peaks1} -b ${peaks2} > ${meta1.id}_${meta2.id}_consensus_peaks.bed
-    bedtools intersect -a ${peaks1} -b ${peaks3} > ${meta1.id}_${meta3.id}_consensus_peaks.bed
-    bedtools intersect -a ${peaks2} -b ${peaks3} > ${meta2.id}_${meta3.id}_consensus_peaks.bed
-    bedtools intersect -b ${peaks1} -a ${peaks2} > ${meta2.id}_${meta1.id}_consensus_peaks.bed
-    bedtools intersect -b ${peaks1} -a ${peaks3} > ${meta3.id}_${meta1.id}_consensus_peaks.bed
-    bedtools intersect -b ${peaks2} -a ${peaks3} > ${meta3.id}_${meta2.id}_consensus_peaks.bed
+    bedtools intersect -a ${peaks1} -b ${peaks2} > ${meta1.id}_in_${meta2.id}_consensus_peaks.bed
+    bedtools intersect -a ${peaks1} -b ${peaks3} > ${meta1.id}_in_${meta3.id}_consensus_peaks.bed
+    bedtools intersect -a ${peaks2} -b ${peaks3} > ${meta2.id}_in_${meta3.id}_consensus_peaks.bed
+    bedtools intersect -b ${peaks1} -a ${peaks2} > ${meta2.id}_in_${meta1.id}_consensus_peaks.bed
+    bedtools intersect -b ${peaks1} -a ${peaks3} > ${meta3.id}_in_${meta1.id}_consensus_peaks.bed
+    bedtools intersect -b ${peaks2} -a ${peaks3} > ${meta3.id}_in_${meta2.id}_consensus_peaks.bed
+    
     
 
     bedtools intersect -a ${meta1.id}_${meta2.id}_consensus_peaks.bed -b ${peaks3} > ${meta1.id}_${meta2.id}_${meta3.id}_consensus_peaks.bed
