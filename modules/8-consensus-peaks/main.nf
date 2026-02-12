@@ -26,7 +26,7 @@ process CONSENSUS_PEAKS {
     bedtools intersect -u -a ${meta2.id}_in_${meta1.id}_consensus_peaks.bed -b ${meta2.id}_in_${meta3.id}_consensus_peaks.bed > ${meta2.id}_in_${meta1.id}_and_${meta3.id}_consensus_peaks.bed
     bedtools intersect -u -a ${meta3.id}_in_${meta1.id}_consensus_peaks.bed -b ${meta3.id}_in_${meta2.id}_consensus_peaks.bed > ${meta3.id}_in_${meta1.id}_and_${meta2.id}_consensus_peaks.bed
 
-    bedtools intersect -u -a ${meta1.id}_in_${meta2.id}_and_${meta3.id}_consensus_peaks.bed -b ${meta2.id}_in_${meta1.id}_and_${meta3.id}_consensus_peaks.bed -u > ${meta1.id}_${meta2.id}_consensus_peaks.bed
+    bedtools intersect -a ${meta1.id}_in_${meta2.id}_and_${meta3.id}_consensus_peaks.bed -b ${meta2.id}_in_${meta1.id}_and_${meta3.id}_consensus_peaks.bed > ${meta1.id}_${meta2.id}_consensus_peaks.bed
     bedtools intersect -a ${meta1.id}_${meta2.id}_consensus_peaks.bed -b ${meta3.id}_in_${meta1.id}_and_${meta2.id}_consensus_peaks.bed > ${meta1.id}_${meta2.id}_${meta3.id}_consensus_peaks.bed
     """
 }
