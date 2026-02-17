@@ -13,7 +13,9 @@ process PEAK_CALLING {
 
     script:
     """
-    macs3 callpeak -t ${bam_sample} -c ${bam_control} --nomodel --extsize 200 -g 2.67e7 --qvalue 0.01 -n ${meta.id}
+    macs3 callpeak -t ${bam_sample} -c ${bam_control} -f BAM --nomodel --extsize 200 -g 2.67e7 -p 1e-3 -n ${meta.id}
     wc -l ${meta.id}_peaks.narrowPeak > ${meta.id}_peaks_count.txt
+
+    sort -k8,8nr ${meta.id}_peaks.narrowPeak > ${meta.id}_peaks_sorted.narrowPeak
     """
 }
